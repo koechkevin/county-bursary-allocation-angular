@@ -131,6 +131,9 @@ export class MainComponent implements OnInit {
         this.locations.wards.push(createdWard);
         this.calculateAmount();
         this.newWard = '';
+        if (this.selectedSubcounty.toString() === this.state.activeSubcounty.toString()) {
+          this.wards = this.pagination([...this.wards, createdWard], this.paginationData.currentPage);
+        }
       });
     }
   }

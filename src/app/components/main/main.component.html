@@ -77,7 +77,7 @@
         </tbody>
       </table>
       <div class="footer">
-        <div class="paginate">
+        <div class="paginate" *ngIf="wards&&wards.length>0">
           <label>
             Wards per page
             <select (change)="changeLimit()" [(ngModel)]="limit">
