@@ -30,7 +30,13 @@ export class MainComponent implements OnInit {
 
   ngOnInit() {
     this.apiService.getAllocations().subscribe((result) => {
-      this.allocations = result.allocations.reverse();
+      const defaultAllocation = [{
+        id: 0,
+        createdAt: '2019-07-20T06:43:44.230Z',
+        updatedAt: '2019-07-20T06:43:44.230Z',
+        amount: 45
+      }];
+      this.allocations = result.allocations.length ? result.allocations.reverse() : defaultAllocation;
     });
     this.apiService.getLocations().subscribe((response) => {
       this.locations = response;
