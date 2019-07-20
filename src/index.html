@@ -8,8 +8,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <script type="text/javascript">
+    document.oncontextmenu = function () {
+      alert('Right click is disabled');
+      return false;
+    }
+  </script>
 </head>
-<body>
+<body onselectstart="return false">
   <app-root></app-root>
 </body>
 </html>
