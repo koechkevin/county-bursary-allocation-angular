@@ -66,8 +66,8 @@
           </td>
           <td>
             <label>
-            <select [(ngModel)]="selectedSubcounty">
-              <option class="capitalize" *ngFor="let subCounty of subCounties" [value]="subCounty.id">{{subCounty.name}}</option>
+            <select class="capitalize" [(ngModel)]="selectedSubcounty">
+              <option *ngFor="let subCounty of subCounties" [value]="subCounty.id">{{subCounty.name}}</option>
             </select>
             </label>
           </td>
