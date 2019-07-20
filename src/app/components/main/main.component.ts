@@ -172,4 +172,6 @@ export class MainComponent implements OnInit {
       this.wards =  this.pagination(this.locations.wards, this.paginationData.currentPage - 1);
     }
   }
+
+  numberWithCommas = (x) => x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
 }

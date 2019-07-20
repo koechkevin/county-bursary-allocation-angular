@@ -14,7 +14,7 @@
   <div class="list" *ngFor="let subCounty of subCounties">
     <button [class]="subCounty.id === state.activeSubcounty?'active':''" (click)="filterWards(subCounty.id)">
       <span class="capitalize">{{ subCounty.name }}</span>
-      <span>Kes {{calculateSubCountyAmount(subCounty.id)}}</span>
+      <span>Kes {{numberWithCommas(calculateSubCountyAmount(subCounty.id))}}</span>
     </button>
   </div>
 </div>
@@ -53,7 +53,7 @@
           <td class="capitalize">{{ ward.name }}</td>
           <td class="capitalize">{{ ward.parent.name }}</td>
           <td>{{moment(ward.createdAt).format('DD-MM-YYYY')}}</td>
-          <td>{{wardAllocation.toFixed(2)}}</td>
+          <td>{{numberWithCommas(wardAllocation.toFixed(2))}}</td>
         </tr>
         <tr id="new-ward">
           <td>New</td>
