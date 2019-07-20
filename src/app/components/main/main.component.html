@@ -13,7 +13,7 @@
   </div>
   <div class="list" *ngFor="let subCounty of subCounties">
     <button [class]="subCounty.id === state.activeSubcounty?'active':''" (click)="filterWards(subCounty.id)">
-      <span>{{ subCounty.name }}</span>
+      <span class="capitalize">{{ subCounty.name }}</span>
       <span>Kes {{calculateSubCountyAmount(subCounty.id)}}</span>
     </button>
   </div>
@@ -50,8 +50,8 @@
         <tbody>
         <tr class="table-row" *ngFor="let ward of wards">
           <td>{{ward.id}}</td>
-          <td>{{ ward.name }}</td>
-          <td>{{ ward.parent.name }}</td>
+          <td class="capitalize">{{ ward.name }}</td>
+          <td class="capitalize">{{ ward.parent.name }}</td>
           <td>{{moment(ward.createdAt).format('DD-MM-YYYY')}}</td>
           <td>{{wardAllocation.toFixed(2)}}</td>
         </tr>
