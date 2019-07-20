@@ -1,0 +1,95 @@
+<div class="main">
+<div class="left">
+  <div class="head">
+    Sub Counties
+    <span class="add-sub-county">
+      <button (click)="addSubcounty()"><i class="material-icons">add</i></button>
+    </span>
+  </div>
+  <div id="add">
+    <input type="text" placeholder="Sub County" name="subCountyName" [(ngModel)]="subCountyName">
+    <button class="cancel" (click)="cancel()">Cancel</button>
+    <button class="save" (click)="saveSubcounty()">Save</button>
+  </div>
+  <div class="list" *ngFor="let subCounty of subCounties">
+    <button [class]="subCounty.id === state.activeSubcounty?'active':''" (click)="filterWards(subCounty.id)">
+      <span>{{ subCounty.name }}</span>
+      <span>Kes {{calculateSubCountyAmount(subCounty.id)}}</span>
+    </button>
+  </div>
+</div>
+  <div class="body">
+    <div class="head">
+      <label>
+        Allocation in Kes
+        <select [(ngModel)]="selected" (change)="changeSelect()">
+          <option *ngFor="let amount of allocations" [value]="amount.amount" [selected]="true">
+            {{ amount.amount }}
+          </option>
+        </select>
+      </label>
+
+      <label>
+        Allocate
+        <input type="number" name="allocation" [(ngModel)]="amount" placeholder="amount">
+        <button (click)="submit()">Submit</button>
+      </label>
+    </div>
+
+    <div class="table">
+      <table>
+        <thead>
+        <tr class="table-head" *ngIf="wards && wards.length">
+          <th>Ward Id</th>
+          <th>Ward Name</th>
+          <th>Sub County</th>
+          <th>Date Created</th>
+          <th>Amount (Kes)</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr class="table-row" *ngFor="let ward of wards">
+          <td>{{ward.id}}</td>
+          <td>{{ ward.name }}</td>
+          <td>{{ ward.parent.name }}</td>
+          <td>{{moment(ward.createdAt).format('DD-MM-YYYY')}}</td>
+          <td>{{wardAllocation.toFixed(2)}}</td>
+        </tr>
+        <tr id="new-ward">
+          <td>New</td>
+          <td>
+            <span>
+              <input type="text" [(ngModel)]="newWard" placeholder="ward name" >
+            </span>
+          </td>
+          <td>
+            <label>
+            <select [(ngModel)]="selectedSubcounty">
+              <option *ngFor="let subCounty of subCounties" [value]="subCounty.id">{{subCounty.name}}</option>
+            </select>
+            </label>
+          </td>
+          <td>{{moment(today).format('DD-MM-YYYY')}}</td>
+          <td><button (click)="createWard()">Save</button></td>
+        </tr>
+        </tbody>
+      </table>
+      <div class="footer">
+        <div class="paginate">
+          <label>
+            Wards per page
+            <select>
+              <option selected>10</option>
+              <option>20</option>
+              <option>30</option>
+            </select>
+          </label>
+          <button>&lsaquo;</button>
+          Page {{ 2 }} of {{ 30 }}
+          <button>&rsaquo;</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>

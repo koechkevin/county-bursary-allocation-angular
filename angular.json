@@ -62,7 +62,8 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "county-allocation:build"
+            "browserTarget": "county-allocation:build",
+            "proxyConfig": "proxy.conf.js"
           },
           "configurations": {
             "production": {

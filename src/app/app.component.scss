@@ -1,0 +1,18 @@
+.nav-bar {
+  position: sticky;
+  top: 0;
+  height: 80px;
+  width: 100vw;
+  min-width: 950px;
+  background-color: white;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+  color: dodgerblue;
+  font-size: 40px;
+  font-weight: bold;
+  display: flex;
+  align-items: flex-end;
+  z-index: 5;
+  img {
+    height: 80px;
+  }
+}

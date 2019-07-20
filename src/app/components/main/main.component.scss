@@ -1,0 +1,206 @@
+.main {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+  font-family: "DIN Pro";
+  input {
+    outline: none;
+    border: none;
+    margin-right: 2em;
+  }
+  .left {
+    width: 30%;
+    min-width: 300px;
+    height: 85vh;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    overflow-y: scroll;
+    background-color: #ffffff;
+    margin-right: 1em;
+    .head {
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background-color: white;
+      padding: 1em 2em;
+      font-weight: bolder;
+      border-bottom: 1px solid lightgrey;
+      color: dodgerblue;
+    }
+    #add {
+      height: 0;
+      border: none;
+      overflow: hidden;
+      transition: height 1s;
+      background-color: #e2e2e2;
+      padding: 0 1.8em;
+      width: 100%;
+      .cancel {
+        height: 2em;
+        &:hover {
+          color: red;
+        }
+      }
+      .save {
+          color: dodgerblue;
+      }
+      button {
+        font-size: 14px;
+        margin-right: 5px;
+        outline: none;
+        cursor: pointer;
+        border: none;
+        background-color: transparent;
+      }
+      input{
+        margin-top: 1.5em;
+        height: 2em;
+        border-radius: 3px;
+      }
+    }
+    .list {
+      .active {
+        background-color: lightgrey;
+      }
+      button {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        width: 100%;
+        padding: 1em 2em;
+        cursor: pointer;
+        background-color: transparent;
+        outline: none;
+        border-bottom: 1px solid lightgrey;
+        border-left: none;
+        border-right: none;
+        &:active{
+          border-top: 1px solid lightgrey;
+        }
+      }
+    }
+  }
+  .body {
+    width: 60%;
+    min-width: 600px;
+    height: 85vh;
+    margin-right: 5%;
+    .head {
+      height: 10vh;
+      width: 100%;
+      margin-bottom: 5vh;
+      background-color: #ffffff;
+      padding: 0 2em;
+      font-size: 13px;
+      display: flex;
+      justify-items: center;
+      align-items: center;
+      justify-content: space-between;
+      input {
+        height: 2em;
+        width: 10em;
+        border: 1px solid lightgrey;
+        border-radius: 4px;
+        margin-left: 1em;
+      }
+      button {
+      cursor: pointer;
+        background-color: dodgerblue;
+        outline: none;
+        height: 2em;
+        border-radius: 4px;
+        color: white;
+        width: 6em;
+    }
+    }
+    .table {
+      height: 70vh;
+      width: 100%;
+      background-color: #ffffff;
+      overflow-y: scroll;
+      position: relative;
+      table {
+        border-collapse: collapse;
+        font-size: 13px;
+        th {
+          position: sticky;
+          top: 0;
+          text-align: left;
+          background-color: lightgrey;
+          color: dodgerblue;
+        }
+      }
+      tr:nth-child(even) {
+        background-color: #f2f2f2
+      }
+      td {
+        width: 200px;
+        padding: 1em;
+        text-align: left;
+        input{
+          border: 1px solid lightgrey;
+          border-radius: 3px;
+          width: 80px;
+        }
+        button {
+          color: dodgerblue;
+          background-color: transparent;
+          &:hover {
+            font-weight: bolder;
+          }
+          &:active {
+            color: red;
+          }
+        }
+      }
+    }
+  }
+}
+.add-sub-county {
+  float: right;
+  button {
+    cursor: pointer;
+    border: none;
+    outline: none;
+    background-color: transparent;
+  }
+}
+.add-button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  background-color: transparent;
+  font-size: 20px;
+  color: lightgrey;
+}
+.footer {
+  width: 100%;
+  height: 90px;
+  padding: 0 2%;
+  margin-left: -1%;
+  position: sticky;
+  background-color: white;
+  display: flex;
+  bottom: 0;
+  font-size: 14px;
+  justify-content: flex-end;
+  align-items: center;
+  overflow: hidden;
+  .paginate {
+    color: dodgerblue;
+    button {
+      cursor: pointer;
+      color: dodgerblue;
+      border: none;
+      outline: none;
+      background-color: transparent;
+      font-size: 20px;
+    }
+  }
+}
+button {
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
