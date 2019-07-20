@@ -9,7 +9,7 @@
   <div id="add">
     <input type="text" placeholder="Sub County" name="subCountyName" [(ngModel)]="subCountyName">
     <button class="cancel" (click)="cancel()">Cancel</button>
-    <button class="save" (click)="saveSubcounty()">Save</button>
+    <button [id]="isSubmitting?'deactivate':''" class="save" (click)="saveSubcounty()">Save</button>
   </div>
   <div class="list" *ngFor="let subCounty of subCounties">
     <button [class]="subCounty.id === state.activeSubcounty?'active':''" (click)="filterWards(subCounty.id)">

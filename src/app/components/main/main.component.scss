@@ -205,6 +205,10 @@ button {
   cursor: pointer;
 }
 .deactivate {
+    pointer-events: none;
+    color: grey !important;
+  }
+#deactivate {
   pointer-events: none;
   color: grey !important;
 }

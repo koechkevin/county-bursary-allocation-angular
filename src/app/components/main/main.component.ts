@@ -25,6 +25,7 @@ export class MainComponent implements OnInit {
   };
   today: Date = new Date();
   limit = 10;
+  isSubmitting: boolean;
   paginationData = {
     pageCount: 1, count: 1, currentPage: 1
   };
@@ -92,15 +93,18 @@ export class MainComponent implements OnInit {
     }
   }
   saveSubcounty(): void {
+    this.isSubmitting = true;
     const subscriber = {
       next: (response) => {
         this.subCounties.unshift(response.subCounty);
         document.getElementById('add').style.height = '0';
         document.getElementById('add').style.border = 'none';
         this.subCountyName = '';
+        this.isSubmitting = false;
       },
       error: (error) => {
         console.log(error);
+        this.isSubmitting = true;
       }
     };
     if (this.subCountyName) {
