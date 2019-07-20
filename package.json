@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node src/api/server.js",
-    "build": "ng build --prod --aot --no-progress",
+    "build": "npm run migrate && ng build --prod --aot --no-progress",
     "test": "ng test",
     "lint": "ng lint",
     "start:dev": "ng serve",
