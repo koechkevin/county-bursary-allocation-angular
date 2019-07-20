@@ -135,7 +135,7 @@ export class MainComponent implements OnInit {
     }
   }
   submit(): void {
-    if (this.amount) {
+    if (this.amount > 10000) {
       this.apiService.createAllocation({amount: this.amount})
         .subscribe((result) => {
           this.allocations.shift();
