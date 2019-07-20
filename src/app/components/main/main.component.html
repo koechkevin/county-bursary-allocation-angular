@@ -78,15 +78,16 @@
         <div class="paginate">
           <label>
             Wards per page
-            <select>
-              <option selected>10</option>
-              <option>20</option>
-              <option>30</option>
+            <select (change)="changeLimit()" [(ngModel)]="limit">
+              <option [value]="5">5</option>
+              <option [value]="10">10</option>
+              <option [value]="20">20</option>
+              <option [value]="30">30</option>
             </select>
           </label>
-          <button>&lsaquo;</button>
-          Page {{ 2 }} of {{ 30 }}
-          <button>&rsaquo;</button>
+          <button [class]="!paginationData.currentPage || paginationData.currentPage === 1?'deactivate':''" (click)="previous()">&lsaquo;</button>
+          Page {{ paginationData.currentPage || 1 }} of {{ paginationData.pageCount || 1 }}
+          <button [class]="paginationData.currentPage === paginationData.pageCount?'deactivate':''" (click)="next()">&rsaquo;</button>
         </div>
       </div>
     </div>

@@ -75,7 +75,8 @@
         border-left: none;
         border-right: none;
         &:active{
-          border-top: 1px solid lightgrey;
+          border-top: none;
+          color: black;
         }
       }
     }
@@ -201,6 +202,13 @@
 button {
   border: none;
   outline: none;
+  cursor: pointer;
+}
+.deactivate {
+  pointer-events: none;
+  color: grey !important;
+}
+select {
   cursor: pointer;
 }
 

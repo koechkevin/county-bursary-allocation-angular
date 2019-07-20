@@ -24,6 +24,10 @@ export class MainComponent implements OnInit {
     activeSubcounty: 0
   };
   today: Date = new Date();
+  limit = 10;
+  paginationData = {
+    pageCount: 1, count: 1, currentPage: 1
+  };
   constructor(private apiService: ApiServiceService) {
     this.moment = moment;
   }
@@ -38,13 +42,27 @@ export class MainComponent implements OnInit {
       }];
       this.allocations = result.allocations.length ? result.allocations.reverse() : defaultAllocation;
     });
+
     this.apiService.getLocations().subscribe((response) => {
       this.locations = response;
       this.subCounties = response.subCounties.reverse();
-      this.wards =  response.wards;
+      this.wards =  this.pagination(response.wards, 1);
       this.selected = this.allocations[this.allocations.length - 1].amount;
       this.calculateAmount();
     });
+  }
+
+  pagination(wards: Ward[], page): Ward[] {
+    const pageCount = Math.ceil(wards.length / this.limit);
+    const count = wards.length;
+    const validPage = page <= 0 ? 1 : Math.min(page, pageCount);
+    const maximum = (validPage * this.limit) - 1;
+    const minimum = (validPage - 1) * this.limit;
+    const output = wards.filter((e, i) => i >= minimum && i <= maximum);
+    this.paginationData = {
+      pageCount, count, currentPage: validPage
+    };
+    return output;
   }
 
   calculateAmount(): void {
@@ -56,7 +74,8 @@ export class MainComponent implements OnInit {
   }
 
   filterWards(id: number): void {
-    this.wards = this.locations.wards.filter((each) => each.sub_county === id);
+    const myWards = this.locations.wards.filter((each) => each.sub_county === id);
+    this.wards = this.pagination(myWards, this.paginationData.currentPage);
     this.state.activeSubcounty = id;
   }
 
@@ -64,6 +83,7 @@ export class MainComponent implements OnInit {
     const myWards = this.locations.wards.filter((each) => each.sub_county === id);
     return (this.wardAllocation * myWards.length).toFixed(2);
   }
+
   addSubcounty(): void {
     if (document.getElementById('add').style.height === '50px') {
       document.getElementById('add').style.height = '0';
@@ -123,4 +143,29 @@ export class MainComponent implements OnInit {
     }
   }
 
+  changeLimit(): void {
+    if (this.state.activeSubcounty) {
+    this.filterWards(this.state.activeSubcounty);
+    } else  {
+      this.wards =  this.pagination(this.locations.wards, 1);
+    }
+  }
+
+  next(): void {
+    if (this.state.activeSubcounty) {
+      const myWards = this.locations.wards.filter((each) => each.sub_county === this.state.activeSubcounty);
+      this.wards = this.pagination(myWards, this.paginationData.currentPage + 1);
+    } else {
+      this.wards =  this.pagination(this.locations.wards, this.paginationData.currentPage + 1);
+    }
+  }
+
+  previous(): void {
+    if (this.state.activeSubcounty) {
+      const myWards = this.locations.wards.filter((each) => each.sub_county === this.state.activeSubcounty);
+      this.wards = this.pagination(myWards, this.paginationData.currentPage - 1);
+    } else {
+      this.wards =  this.pagination(this.locations.wards, this.paginationData.currentPage - 1);
+    }
+  }
 }
