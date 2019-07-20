@@ -7,7 +7,9 @@
     </span>
   </div>
   <div id="add">
-    <input type="text" placeholder="Sub County" name="subCountyName" [(ngModel)]="subCountyName">
+    <label>
+      <input type="text" placeholder="Sub County" name="subCountyName" [(ngModel)]="subCountyName">
+    </label>
     <button class="cancel" (click)="cancel()">Cancel</button>
     <button [id]="isSubmitting?'deactivate':''" class="save" (click)="saveSubcounty()">Save</button>
   </div>
@@ -24,7 +26,7 @@
         Allocation in Kes
         <select [(ngModel)]="selected" (change)="changeSelect()">
           <option *ngFor="let amount of allocations" [value]="amount.amount" [selected]="true">
-            {{ amount.amount }}
+            {{ numberWithCommas(amount.amount) }}
           </option>
         </select>
       </label>
