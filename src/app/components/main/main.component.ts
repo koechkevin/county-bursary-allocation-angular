@@ -26,6 +26,7 @@ export class MainComponent implements OnInit {
   today: Date = new Date();
   limit = 10;
   isSubmitting: boolean;
+  peopleWithDisabilityAllocation = 0;
   paginationData = {
     pageCount: 1, count: 1, currentPage: 1
   };
@@ -67,7 +68,8 @@ export class MainComponent implements OnInit {
   }
 
   calculateAmount(): void {
-    this.wardAllocation = this.selected / this.locations.wards.length;
+    this.wardAllocation = 0.9 * this.selected / this.locations.wards.length;
+    this.peopleWithDisabilityAllocation = 0.1 * this.selected;
   }
 
   changeSelect(): void {

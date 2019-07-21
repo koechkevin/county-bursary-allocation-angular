@@ -111,7 +111,6 @@ export class WardComponent implements OnInit {
   }
 
   createNewVillage() {
-    console.log(this.newVillage);
     if (this.newVillage.name && this.newVillage.subLocation) {
       this.apiService.createVillage(this.newVillage)
         .subscribe((res) => {
