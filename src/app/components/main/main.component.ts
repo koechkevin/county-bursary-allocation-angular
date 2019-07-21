@@ -16,7 +16,7 @@ export class MainComponent implements OnInit {
   wards: Ward[];
   locations: Locations;
   selected: number;
-  wardAllocation: number;
+  wardAllocation = 0;
   subCountyName: string;
   newWard: string;
   selectedSubcounty: number;

@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
       as: 'parent',
     });
+    Ward.hasMany(models.Location, {
+      foreignKey: 'ward',
+      as: 'ward_data',
+    })
   };
   return Ward;
 };

@@ -6,11 +6,13 @@ import { AppComponent } from './app.component';
 import { MainComponent } from './components/main/main.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
+import { WardComponent } from './components/ward/ward.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MainComponent
+    MainComponent,
+    WardComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,134 @@
+.form {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  top: 3.4em;
+  background-color: #f2f2f2;
+  z-index: 1;
+  padding: 1em;
+  border: 1px solid lightgrey;
+  button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    outline: none;
+  }
+  input {
+    outline: none;
+    border-radius: 3px;
+    border: none;
+  }
+  .save {
+    color: dodgerblue;
+  }
+  .cancel {
+    color: red;
+  }
+}
+.list {
+  max-width: 320px;
+  width: 22.5%;
+  min-width: 300px;
+  background-color: #f2f2f2;
+  overflow-y: scroll;
+  height: 85vh;
+  border: 1px solid lightgrey;
+  .button {
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+    width: 100%;
+    cursor: pointer;
+    padding: 1em;
+    outline: none;
+    border: 1px solid lightgrey;
+    text-transform: capitalize;
+  }
+}
+.body {
+  display: flex;
+  overflow-x: scroll;
+}
+.sub-locations {
+  max-width: 320px;
+  width: 22.5%;
+  min-width: 300px;
+  background-color: #f2f2f2;
+  overflow-y: scroll;
+  height: 85vh;
+  border: 1px solid lightgrey;
+  .button {
+    display: flex;
+    justify-content: space-between;
+    background-color: transparent;
+    width: 100%;
+    cursor: pointer;
+    padding: 1em;
+    outline: none;
+    border: 1px solid lightgrey;
+    text-transform: capitalize;
+  }
+}
+.head {
+  position: sticky;
+  top: 0;
+  background-color: #f2f2f2;
+  text-align: center;
+  padding: 1em;
+  border: 1px solid lightgrey;
+  font-weight: bolder;
+  color: lightgrey;
+}
+.beneficiaries {
+  width: 32%;
+  min-width: 433px;
+  max-height: 85vh;
+}
+.table {
+  background-color: #ffffff;
+  overflow-y: scroll;
+  position: relative;
+  table {
+    border-collapse: collapse;
+    font-size: 10px;
+    th {
+      position: sticky;
+      top: 0;
+      text-align: left;
+      padding-left: 9px;
+      margin-left: 10px;
+      background-color: lightgrey;
+      color: dodgerblue;
+    }
+  }
+  tr:nth-child(even) {
+    background-color: #f2f2f2
+  }
+  td {
+    width: 200px;
+    padding: 1em;
+    text-align: left;
+    input{
+      border: 1px solid lightgrey;
+      border-radius: 3px;
+      width: 80px;
+    }
+    button {
+      color: dodgerblue;
+      background-color: transparent;
+      &:hover {
+        font-weight: bolder;
+      }
+      &:active {
+        color: red;
+      }
+    }
+  }
+}
+select {
+  width: 40px;
+  text-transform: capitalize;
+}
+button.active.button {
+  background-color: #c8c8c8 !important;
+}
