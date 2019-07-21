@@ -78,12 +78,14 @@ export class WardComponent implements OnInit {
     this.state.activeLocation = id;
     this.filteredSubLocations = this.subLocations.filter(e => e.location === this.state.activeLocation);
     this.subLocationAmount = this.locationAmount / this.filteredSubLocations.length || 1;
+    this.newSubLocation.location = id;
   }
 
   setActiveSubLocation(id: number) {
     this.state.activeSubLocation = id;
     this.filteredVillages = this.villages.filter(each => each.sub_location === this.state.activeSubLocation);
     this.villageAmount = this.subLocationAmount / this.filteredVillages.length || 1;
+    this.newVillage.subLocation = id;
   }
 
   submit() {
@@ -93,6 +95,9 @@ export class WardComponent implements OnInit {
           this.apiService.getWardLocations().subscribe((res) => {
             this.locations = res.wardLocations;
             this.filteredLocations = this.locations.filter((e) => e.ward.toString() === this.route.snapshot.params.id);
+            this.locationAmount = parseFloat(this.route.snapshot.params.amount) / this.filteredLocations.length || 1;
+            this.subLocationAmount = this.locationAmount / this.filteredSubLocations.length || 1;
+            this.villageAmount = this.subLocationAmount / this.filteredVillages.length || 1;
             this.newLocation = {name: '', ward: 0};
           });
         });
