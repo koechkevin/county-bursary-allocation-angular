@@ -9,9 +9,13 @@
   <link rel="icon" type="image/x-icon" href="favicon.ico">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <script type="text/javascript">
-    document.oncontextmenu = function () {
-      alert('Right click is disabled');
-      return false;
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'){
+      console.log('Right click enabled');
+    } else {
+      document.oncontextmenu = function () {
+        alert('Right click is disabled');
+        return false;
+      }
     }
   </script>
 </head>

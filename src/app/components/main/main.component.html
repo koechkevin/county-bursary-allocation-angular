@@ -52,7 +52,11 @@
         <tbody>
         <tr class="table-row" *ngFor="let ward of wards">
           <td>{{ward.id}}</td>
-          <td class="capitalize">{{ ward.name }}</td>
+          <td class="capitalize">
+            <a [routerLink]="'/wards/'+wardAllocation.toString()+'/'+ward.id.toString()">
+              {{ ward.name }}
+            </a>
+          </td>
           <td class="capitalize">{{ ward.parent.name }}</td>
           <td>{{moment(ward.createdAt).format('DD-MM-YYYY')}}</td>
           <td>{{numberWithCommas(wardAllocation.toFixed(2))}}</td>
@@ -61,7 +65,9 @@
           <td>New</td>
           <td>
             <span>
-              <input type="text" [(ngModel)]="newWard" placeholder="ward name" >
+              <label>
+                <input type="text" [(ngModel)]="newWard" placeholder="ward name" >
+              </label>
             </span>
           </td>
           <td>

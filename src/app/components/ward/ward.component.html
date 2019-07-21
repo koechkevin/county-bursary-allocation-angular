@@ -1,0 +1,90 @@
+<div class="body">
+
+
+  <div class="list">
+    <div class="head">
+      Locations
+    </div>
+    <div class="form">
+      <label>
+        <input placeholder="Name" type="text" [(ngModel)]="newLocation.name">
+      </label>
+      <button class="cancel" (click)="cancel()">Cancel</button>
+      <button class="save" (click)="submit()">Submit</button>
+    </div>
+    <div *ngFor="let each of filteredLocations">
+      <button (click)="setActive(each.id)" [class]="each.id === state.activeLocation?'active button':'button'">
+        <span>{{each.name}}</span>
+        <span>Kes {{numberWithCommas(locationAmount.toFixed(2))}}</span>
+      </button>
+    </div>
+  </div>
+
+
+  <div class="sub-locations">
+    <div class="head">
+      Sub Locations
+    </div>
+    <div class="form">
+      <label>
+        <input placeholder="Name" type="text" [(ngModel)]="newSubLocation.name">
+      </label>
+      <label>
+        <select [(ngModel)]="newSubLocation.location" >
+          <option *ngFor="let each of filteredLocations" [value]="each.id">{{ each.name }}</option>
+        </select>
+      </label>
+      <button class="cancel" (click)="cancel()">Cancel</button>
+      <button class="save" (click)="createSubLocation()">Submit</button>
+    </div>
+    <div class="loop" *ngFor="let each of filteredSubLocations">
+      <button [class]="each.id === state.activeSubLocation?'active button':'button'" (click)="setActiveSubLocation(each.id)" class="button">
+       <span>{{each.name}}</span>
+        <span>Kes {{numberWithCommas(subLocationAmount.toFixed(2))}}</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="sub-locations">
+    <div class="head">
+      Villages
+    </div>
+    <div class="form">
+      <label>
+        <input placeholder="Name" type="text" [(ngModel)]="newVillage.name">
+      </label>
+      <label>
+        <select [(ngModel)]="newVillage.subLocation">
+          <option *ngFor="let each of filteredSubLocations" [value]="each.id">{{ each.name }}</option>
+        </select>
+      </label>
+      <button class="cancel" (click)="cancel()">Cancel</button>
+      <button class="save" (click)="createNewVillage()">Submit</button>
+    </div>
+    <div *ngFor="let each of filteredVillages">
+      <button class="button">
+        <span>{{each.name}}</span>
+        <span>Kes {{numberWithCommas(villageAmount.toFixed(2)) }}</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="beneficiaries table">
+    <table>
+      <thead>
+      <tr class="table-head">
+        <th>Student</th>
+        <th>Institution</th>
+        <th>Amount</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr class="table-row" *ngFor="let student of [1,2,3,4,5,5,5,6,4,5,6,1,2,3,4,2,4,3,4,5]">
+        <td class="capitalize">John Doe</td>
+        <td class="capitalize">Kapsabet High School</td>
+        <td class="capitalize">{{student.toString() + (student+3).toString() + ',' + '0'+(student+9).toString() + '.' + (student + 19).toString()}}</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

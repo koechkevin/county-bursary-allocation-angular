@@ -23,4 +23,24 @@ export class ApiServiceService {
   createWard(data): Observable<any> {
     return this.http.post<any>('/api/wards', data);
   }
+  createWardLocations(data): Observable<any> {
+    return this.http.post<any>('/api/wards/location', data);
+  }
+  getWardLocations(): Observable<any> {
+    return this.http.get<any>('/api/wards/location');
+  }
+
+  createSubLocation(data): Observable<any> {
+    return this.http.post<any>('/api/wards/sub-location', data);
+  }
+  getSubLocations(): Observable<any> {
+    return this.http.get<any>('/api/wards/sub-location');
+  }
+
+  createVillage(data): Observable<any> {
+    return this.http.post<any>('/api/wards/villages', data);
+  }
+  getVillages(): Observable<any> {
+    return this.http.get<any>('/api/wards/villages');
+  }
 }
