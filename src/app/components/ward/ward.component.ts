@@ -92,6 +92,7 @@ export class WardComponent implements OnInit {
         .subscribe(() => {
           this.apiService.getWardLocations().subscribe((res) => {
             this.locations = res.wardLocations;
+            this.filteredLocations = this.locations.filter((e) => e.ward.toString() === this.route.snapshot.params.id);
             this.newLocation = {name: '', ward: 0};
           });
         });
