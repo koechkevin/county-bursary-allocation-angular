@@ -48,7 +48,10 @@ export class MainComponent implements OnInit {
     this.apiService.getLocations().subscribe((response) => {
       this.locations = response;
       this.subCounties = response.subCounties.reverse();
-      this.wards =  this.pagination(response.wards, 1);
+      this.state.activeSubcounty = this.subCounties.length && this.subCounties[0].id || 0;
+      this.selectedSubcounty = this.state.activeSubcounty;
+      const myWards = this.locations.wards.filter((each) => each.sub_county === this.state.activeSubcounty);
+      this.wards = this.pagination(myWards, this.paginationData.currentPage - 1);
       this.selected = this.allocations[this.allocations.length - 1].amount;
       this.calculateAmount();
     });
@@ -80,6 +83,7 @@ export class MainComponent implements OnInit {
     const myWards = this.locations.wards.filter((each) => each.sub_county === id);
     this.wards = this.pagination(myWards, this.paginationData.currentPage);
     this.state.activeSubcounty = id;
+    this.selectedSubcounty = this.state.activeSubcounty;
   }
 
   calculateSubCountyAmount(id: number): string {
