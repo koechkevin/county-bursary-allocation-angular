@@ -10,6 +10,10 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE',
       as: 'sub_location_data',
     });
+    Village.hasMany(models.Application, {
+      foreignKey: 'village',
+      as: 'applicant_village',
+    })
   };
   return Village;
 };

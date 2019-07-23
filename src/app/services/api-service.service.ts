@@ -43,4 +43,8 @@ export class ApiServiceService {
   getVillages(): Observable<any> {
     return this.http.get<any>('/api/wards/villages');
   }
+
+  postApplication(data): Observable<any> {
+    return this.http.post<any>('/api/apply', data);
+  }
 }

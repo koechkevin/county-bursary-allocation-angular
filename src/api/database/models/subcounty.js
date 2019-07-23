@@ -7,6 +7,10 @@ module.exports = (sequelize, DataTypes) => {
     Subcounty.hasMany(models.Ward, {
       foreignKey: 'sub_county',
       as: 'parent',
+    });
+    Subcounty.hasMany(models.Application, {
+      foreignKey: 'sub_county',
+      as: 'applicant_sub_county',
     })
   };
   return Subcounty;

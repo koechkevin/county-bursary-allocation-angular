@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
     Ward.hasMany(models.Location, {
       foreignKey: 'ward',
       as: 'ward_data',
+    });
+    Ward.hasMany(models.Application, {
+      foreignKey: 'ward',
+      as: 'applicant_ward',
     })
   };
   return Ward;

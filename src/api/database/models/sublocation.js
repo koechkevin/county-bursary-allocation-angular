@@ -13,6 +13,10 @@ module.exports = (sequelize, DataTypes) => {
     SubLocation.hasMany(models.Village, {
       foreignKey: 'sub_location',
       as: 'sub_location_data',
+    });
+    SubLocation.hasMany(models.Application, {
+      foreignKey: 'sub_location',
+      as: 'applicant_sub_location',
     })
   };
   return SubLocation;

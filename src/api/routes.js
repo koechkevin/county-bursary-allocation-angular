@@ -109,7 +109,31 @@ const routes = (app) => {
     models.Village.findAll({include: [{model: models.SubLocation, as: 'sub_location_data'}]})
       .then((villages) => res.status(200).json({ villages }))
       .catch((error) => res.status(400).json({ error }))
-  })
+  });
+
+  app.post('/api/apply', (req, res) => {
+    const { body:{
+      name, guardian, contact, institution, disability, subCounty, ward, location, subLocation, village, feeBalance, requestedAmount}} = req;
+    if(name&&guardian&&institution&&contact&&subLocation&&subCounty&&ward&&location&&village&&feeBalance&&requestedAmount) {
+      models.Application.create({ guardian,
+        contact, institution, disability, sub_county:subCounty, name,
+        ward, location, sub_location: subLocation, village, fee_balance: feeBalance, requested_amount:requestedAmount})
+        .then(application => {res.status(201).json({ application });})
+        .catch((error) => res.status(400).json({ error }))
+    } else res.status(422).json({error: 'An error occurred'})
+  });
+
+  app.get('/api/apply', (req, res) => {
+    models.Application.findAll({include: [
+        {model: models.Subcounty, as: 'applicant_sub_county'},
+        {model: models.Ward, as: 'applicant_ward'},
+        {model: models.Location, as: 'applicant_location'},
+        {model: models.SubLocation, as: 'applicant_sub_location'},
+        {model: models.Village, as: 'applicant_village'},
+      ]})
+      .then((applications) => res.status(200).json({ applications }))
+      .catch((error) => res.status(400).json({ error }))
+  });
 };
 
 module.exports = routes;

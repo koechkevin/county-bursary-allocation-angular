@@ -1,0 +1,98 @@
+<div class="form">
+  <div class="form-body">
+  <label>
+    <span>Applicant's Name</span>
+    <input [(ngModel)]="application.name" type="text">
+  </label>
+  <label>
+    Parent or Guardian
+    <input [(ngModel)]="application.guardian" type="text">
+  </label>
+  <label>
+    Contact
+    <input [(ngModel)]="application.contact" type="number">
+  </label>
+  <label>
+    <span>Institution</span>
+    <input [(ngModel)]="application.institution" type="text">
+  </label>
+  <label>
+    Sub County
+    <span class="select">
+      <select (change)="change('subCounty')" class="capitalize" [(ngModel)]="application.subCounty">
+      <option *ngFor="let subCounty of subCounties" [value]="subCounty.id">{{subCounty.name}}</option>
+    </select>
+    </span>
+  </label>
+
+  <label>
+    Ward
+    <span class="select">
+      <select (change)="change('ward')"  class="capitalize" [(ngModel)]="application.ward">
+      <option *ngFor="let ward of options.wards" [value]="ward.id">{{ ward.name }}</option>
+    </select>
+    </span>
+  </label>
+
+  <label>
+    Location
+    <span class="select">
+      <select (change)="change('location')"  [(ngModel)]="application.location">
+      <option *ngFor="let location of options.locations" [value]="location.id">{{ location.name }}</option>
+    </select>
+    </span>
+  </label>
+
+  <label>
+    Sub Location
+    <span class="select">
+      <select (change)="change('sub-location')"  [(ngModel)]="application.subLocation">
+      <option *ngFor="let location of options.subLocations" [value]="location.id">{{ location.name }}</option>
+    </select>
+    </span>
+  </label>
+
+  <label>
+    Village
+    <span class="select">
+      <select [(ngModel)]="application.village">
+      <option *ngFor="let location of options.villages" [value]="location.id">{{ location.name }}</option>
+    </select>
+    </span>
+  </label>
+
+  <label>
+    Are you disabled?
+    <span class="select">
+      <select [(ngModel)]="application.isDisabled">
+      <option [value]="true">Yes</option>
+      <option [value]="false">No</option>
+    </select>
+    </span>
+  </label>
+
+  <label *ngIf="application.isDisabled">
+    Disability Nature
+    <span class="select">
+      <select [(ngModel)]="application.disability">
+      <option value="physical">Physical</option>
+      <option value="hearing">Hearing</option>
+        <option value="visual">Visual</option>
+        <option value="other">Other</option>
+    </select>
+    </span>
+  </label>
+  <label>
+    <span>Fee Balance</span>
+    <input [(ngModel)]="application.feeBalance" type="number">
+  </label>
+  <label>
+    <span>Bursary Requested</span>
+    <input [(ngModel)]="application.requestedAmount" type="text">
+  </label>
+  </div>
+  <div class="submit-area">
+    <button class="cancel">Cancel</button>
+    <button (click)="submit()" class="submit">Submit</button>
+  </div>
+</div>
