@@ -21,7 +21,7 @@ export class ApplicationComponent implements OnInit {
     institution: '',
     disability: null,
     subCounty: 0,
-    isDisabled: false,
+    isDisabled: 'false',
     ward: 0,
     location: 0,
     subLocation: 0,

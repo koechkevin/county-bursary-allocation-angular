@@ -65,13 +65,13 @@
     Are you disabled?
     <span class="select">
       <select [(ngModel)]="application.isDisabled">
-      <option [value]="true">Yes</option>
-      <option [value]="false">No</option>
+      <option value="true">Yes</option>
+      <option value="false">No</option>
     </select>
     </span>
   </label>
 
-  <label *ngIf="application.isDisabled">
+  <label *ngIf="application.isDisabled === 'true'">
     Disability Nature
     <span class="select">
       <select [(ngModel)]="application.disability">
