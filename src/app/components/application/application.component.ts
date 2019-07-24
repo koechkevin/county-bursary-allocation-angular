@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {ApiServiceService} from '../../services/api-service.service';
+import toast from 'toastr';
 
 @Component({
   selector: 'app-application',
@@ -91,11 +92,11 @@ export class ApplicationComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.application);
     this.apiService.postApplication(this.application)
       .subscribe((response) => {
         this.application = this.defaultData;
-      });
+        toast.success('Successfully created');
+      }, (error) => {toast.error('An error occured please resubmit'); });
   }
 
 }
